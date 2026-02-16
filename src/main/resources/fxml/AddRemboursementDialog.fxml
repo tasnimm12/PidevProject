@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.AddRemboursementDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white;" 
+      prefWidth="600" prefHeight="650">
+    
+    <Label text="Add Remboursement" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    <Separator/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                VBox.vgrow="ALWAYS" prefHeight="450">
+        <VBox spacing="20" style="-fx-padding: 10;">
+            
+            <VBox spacing="8">
+                <Label text="Type *" styleClass="field-label"/>
+                <ComboBox fx:id="typeComboBox" promptText="Select Type" prefWidth="540" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Credit (for payment type only)" styleClass="field-label"/>
+                <ComboBox fx:id="creditComboBox" promptText="Select Credit" prefWidth="540" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="User *" styleClass="field-label"/>
+                <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="540" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Bank Account *" styleClass="field-label"/>
+                <ComboBox fx:id="compteComboBox" promptText="Select Account" prefWidth="540" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Amount *" styleClass="field-label"/>
+                <TextField fx:id="montantField" promptText="0.00" prefWidth="540" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Date *" styleClass="field-label"/>
+                <DatePicker fx:id="datePicker" promptText="Select date" prefWidth="540" styleClass="modern-date-picker"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Status *" styleClass="field-label"/>
+                <ComboBox fx:id="statusComboBox" promptText="Select Status" prefWidth="540" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Description" styleClass="field-label"/>
+                <TextArea fx:id="descriptionField" promptText="Details..." prefHeight="80" wrapText="true"
+                         style="-fx-background-color: white; -fx-border-color: lightgrey; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;"/>
+            </VBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <Separator/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: lightgrey; -fx-text-fill: black; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Add" onAction="#handleAdd" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>

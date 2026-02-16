@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="tn.esprit.controllers.ClientAbonnementController"
+           prefHeight="800" prefWidth="1400" styleClass="gradient-background"
+           stylesheets="@../styles/style.css">
+    
+    <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+            <Insets top="20" right="30" bottom="30" left="30"/>
+        </padding>
+        
+        <!-- Navigation Bar -->
+        <HBox styleClass="nav-bar" spacing="30" alignment="CENTER_LEFT" prefHeight="60">
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+            
+            <!-- Logo -->
+            <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#handleBackToDashboard" style="-fx-cursor: hand;">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Credix" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- User Menu -->
+            <HBox spacing="15" alignment="CENTER">
+                <MenuButton fx:id="userMenuButton" text="Navigation" styleClass="nav-button"
+                           style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-padding: 8 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <items>
+                        <MenuItem text="🏠 Dashboard" onAction="#handleBackToDashboard"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="💳 My Accounts" onAction="#handleMyAccountsClick"/>
+                        <MenuItem text="💰 My Expenses" onAction="#handleMyExpensesClick"/>
+                        <MenuItem text="💵 My Credits" onAction="#handleMyCreditsClick"/>
+                        <MenuItem text="↩️ My Remboursements" onAction="#handleMyRemboursementsClick"/>
+                        <MenuItem text="📋 My Abonnement"/>
+                        <MenuItem text="🛡️ My Assurances" onAction="#handleMyAssurancesClick"/>
+                    </items>
+                </MenuButton>
+                <VBox alignment="CENTER_RIGHT" spacing="2">
+                    <Label fx:id="headerUserNameLabel" text="Your Name" 
+                           style="-fx-font-weight: 600; -fx-font-size: 13; -fx-text-fill: #2d3748;"/>
+                    <Label fx:id="headerUserRoleLabel" text="Client" 
+                           style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                </VBox>
+                <Button text="Logout" styleClass="logout-button" onAction="#handleLogout"/>
+            </HBox>
+        </HBox>
+        
+        <!-- Content -->
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+        <VBox spacing="30" alignment="TOP_CENTER" prefWidth="900">
+            
+            <!-- Title -->
+            <Label text="My Abonnement" 
+                   style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+            
+            <!-- Current Abonnement Card -->
+            <VBox fx:id="abonnementCard" spacing="20" alignment="CENTER" styleClass="card" 
+                  style="-fx-padding: 50; -fx-min-height: 400;">
+                
+                <!-- Icon -->
+                <StackPane fx:id="iconContainer" prefWidth="100" prefHeight="100" 
+                          style="-fx-background-color: #667eea; -fx-background-radius: 50;">
+                    <Label fx:id="iconLabel" text="?" 
+                           style="-fx-text-fill: white; -fx-font-size: 48; -fx-font-weight: bold;"/>
+                </StackPane>
+                
+                <!-- Type -->
+                <Label fx:id="typeLabel" text="No Active Abonnement" 
+                       style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+                
+                <!-- Details -->
+                <VBox spacing="15" alignment="CENTER">
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="Price:" style="-fx-font-size: 16; -fx-text-fill: #a0aec0; -fx-font-weight: 600;"/>
+                        <Label fx:id="priceLabel" text="0.00" 
+                               style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+                    </HBox>
+                    
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="Duration:" style="-fx-font-size: 16; -fx-text-fill: #a0aec0; -fx-font-weight: 600;"/>
+                        <Label fx:id="durationLabel" text="0 months" 
+                               style="-fx-font-size: 18; -fx-text-fill: #2d3748; -fx-font-weight: 600;"/>
+                    </HBox>
+                    
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="Start Date:" style="-fx-font-size: 16; -fx-text-fill: #a0aec0; -fx-font-weight: 600;"/>
+                        <Label fx:id="startDateLabel" text="N/A" 
+                               style="-fx-font-size: 16; -fx-text-fill: #2d3748;"/>
+                    </HBox>
+                    
+                    <HBox spacing="10" alignment="CENTER">
+                        <Label text="End Date:" style="-fx-font-size: 16; -fx-text-fill: #a0aec0; -fx-font-weight: 600;"/>
+                        <Label fx:id="endDateLabel" text="N/A" 
+                               style="-fx-font-size: 16; -fx-text-fill: #2d3748;"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- Status Badge -->
+                <HBox fx:id="statusBadge" alignment="CENTER" visible="false"
+                      style="-fx-background-color: #48bb78; -fx-background-radius: 20; -fx-padding: 10 30;">
+                    <Label text="ACTIVE" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14;"/>
+                </HBox>
+                
+                <!-- Cancel Subscription Button -->
+                <Button fx:id="cancelSubscriptionBtn" text="Cancel Subscription" visible="false"
+                        onAction="#handleCancelSubscription"
+                        style="-fx-background-color: #f56565; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 12 24; -fx-cursor: hand; -fx-font-weight: 600; -fx-font-size: 14;"/>
+                
+            </VBox>
+            
+            <!-- Available Plans -->
+            <VBox spacing="20" alignment="CENTER">
+                <Label text="Available Plans" 
+                       style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+                
+                <FlowPane fx:id="plansContainer" hgap="20" vgap="20" alignment="CENTER"/>
+            </VBox>
+            
+        </VBox>
+        </ScrollPane>
+        
+    </VBox>
+    
+</StackPane>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyAssuranceDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white; -fx-background-radius: 15;"
+      stylesheets="@../styles/style.css">
+    
+    <Label text="Modify Assurance" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <ScrollPane fitToWidth="true" prefHeight="500" style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="15">
+            <GridPane hgap="15" vgap="15">
+                
+                <Label text="User" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <ComboBox fx:id="userComboBox" promptText="Select user" 
+                         styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Type" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="typeComboBox" promptText="Select type" 
+                         styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Company" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="compagnieField" promptText="Enter company name" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="Policy Number" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="numeroPoliceField" promptText="Enter policy number" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Coverage Amount" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="montantCouvertureField" promptText="Enter coverage amount" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                
+                <Label text="Franchise" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <TextField fx:id="franchiseField" promptText="Enter franchise" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                
+                <Label text="Annual Premium" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <TextField fx:id="primeAnnuelleField" promptText="Enter annual premium" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                
+                <Label text="Monthly Premium" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <TextField fx:id="primeMensuelleField" promptText="Enter monthly premium" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                
+                <Label text="Start Date" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <DatePicker fx:id="dateDebutPicker" promptText="Select start date" 
+                           styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                
+                <Label text="Expiry Date" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <DatePicker fx:id="dateEcheancePicker" promptText="Select expiry date" 
+                           styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                
+                <Label text="Payment Mode" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                <ComboBox fx:id="modePaiementComboBox" promptText="Select payment mode" 
+                         styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+                
+                <Label text="Status" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+                <ComboBox fx:id="statutComboBox" promptText="Select status" 
+                         styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+                
+                <Label text="Auto Renewal" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+                <CheckBox fx:id="renouvellementAutoCheckBox" 
+                         GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+                
+                <Label text="Guarantees" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
+                <TextArea fx:id="garantiesTextArea" promptText="Enter guarantees (optional)" 
+                         prefRowCount="3" wrapText="true"
+                         GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+                
+            </GridPane>
+        </VBox>
+    </ScrollPane>
+    
+    <Label fx:id="errorLabel" styleClass="error-label" wrapText="true" visible="false"/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" styleClass="secondary-button" prefHeight="45" prefWidth="120" onAction="#handleCancel"/>
+        <Button text="Update" styleClass="primary-button" prefHeight="45" prefWidth="120" onAction="#handleUpdate"/>
+    </HBox>
+    
+</VBox>

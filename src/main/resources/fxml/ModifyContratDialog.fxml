@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyContratDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white; -fx-background-radius: 15;"
+      stylesheets="@../styles/style.css">
+    
+    <Label text="Modify Contrat" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <ScrollPane fitToWidth="true" prefHeight="500" style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="15">
+            <GridPane hgap="15" vgap="15">
+                
+                <Label text="Assurance" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <ComboBox fx:id="assuranceComboBox" promptText="Select assurance" 
+                         styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Contract Number" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="numeroContratField" promptText="Enter contract number" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Signature Date" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <DatePicker fx:id="dateSignaturePicker" promptText="Select signature date" 
+                           styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="End Date" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <DatePicker fx:id="dateFinContratPicker" promptText="Select end date" 
+                           styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Duration (months)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="dureeContratField" promptText="Enter duration in months" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                
+                <Label text="Annual Cap" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <TextField fx:id="plafondAnnuelField" promptText="Enter annual cap" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                
+                <Label text="Refund Rate (%)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <TextField fx:id="tauxRemboursementField" promptText="Enter refund rate" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                
+                <Label text="Waiting Period (days)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <TextField fx:id="delaiCarenceField" promptText="Enter waiting period" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                
+                <Label text="Adviser" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <TextField fx:id="conseillerField" promptText="Enter adviser name" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+                
+                <Label text="Status" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <ComboBox fx:id="statutComboBox" promptText="Select status" 
+                         styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+                
+                <Label text="Special Conditions" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="10"/>
+                <TextArea fx:id="conditionsTextArea" promptText="Enter special conditions (optional)" 
+                         prefRowCount="3" wrapText="true"
+                         GridPane.columnIndex="1" GridPane.rowIndex="10"/>
+                
+                <Label text="Exclusions" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="11"/>
+                <TextArea fx:id="exclusionsTextArea" promptText="Enter exclusions (optional)" 
+                         prefRowCount="3" wrapText="true"
+                         GridPane.columnIndex="1" GridPane.rowIndex="11"/>
+                
+                <Label text="Beneficiary Clause" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="12"/>
+                <TextArea fx:id="clauseBeneficiaireTextArea" promptText="Enter beneficiary clause (optional)" 
+                         prefRowCount="2" wrapText="true"
+                         GridPane.columnIndex="1" GridPane.rowIndex="12"/>
+                
+                <Label text="Contacts" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="13"/>
+                <TextField fx:id="contactsField" promptText="Enter contacts (optional)" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="13"/>
+                
+            </GridPane>
+        </VBox>
+    </ScrollPane>
+    
+    <Label fx:id="errorLabel" styleClass="error-label" wrapText="true" visible="false"/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" styleClass="secondary-button" prefHeight="45" prefWidth="120" onAction="#handleCancel"/>
+        <Button text="Update" styleClass="primary-button" prefHeight="45" prefWidth="120" onAction="#handleUpdate"/>
+    </HBox>
+    
+</VBox>

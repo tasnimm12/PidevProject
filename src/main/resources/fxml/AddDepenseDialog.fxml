@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.AddDepenseDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: #f7fafc;" 
+      prefWidth="600" prefHeight="650">
+    
+    <Label text="Add New Expense" 
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <Separator/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                VBox.vgrow="ALWAYS" prefHeight="450">
+        <VBox spacing="20" style="-fx-padding: 10;">
+            
+            <!-- Bank Account Selection -->
+            <VBox spacing="8">
+                <Label text="Bank Account *" styleClass="field-label"/>
+                <ComboBox fx:id="compteComboBox" promptText="Select Bank Account" prefWidth="540" 
+                         styleClass="modern-combo-box"/>
+                <Label text="Select the account this expense is related to" 
+                       style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+            </VBox>
+            
+            <!-- Description -->
+            <VBox spacing="8">
+                <Label text="Description *" styleClass="field-label"/>
+                <TextArea fx:id="descriptionField" promptText="Describe the expense..." 
+                          prefWidth="540" prefHeight="80" wrapText="true" 
+                          style="-fx-background-color: white; -fx-border-color: #e2e8f0; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;"/>
+                <Label text="Minimum 5 characters" 
+                       style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+            </VBox>
+            
+            <!-- Amount -->
+            <VBox spacing="8">
+                <Label text="Amount *" styleClass="field-label"/>
+                <TextField fx:id="montantField" promptText="0.00" 
+                          prefWidth="540" styleClass="modern-text-field"/>
+                <Label text="Expense amount (must be positive)" 
+                       style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+            </VBox>
+            
+            <!-- Date -->
+            <VBox spacing="8">
+                <Label text="Expense Date *" styleClass="field-label"/>
+                <DatePicker fx:id="datePicker" promptText="Select date" prefWidth="540" 
+                           styleClass="modern-date-picker"/>
+            </VBox>
+            
+            <!-- Category -->
+            <VBox spacing="8">
+                <Label text="Category *" styleClass="field-label"/>
+                <ComboBox fx:id="categoryComboBox" promptText="Select Category" prefWidth="540" 
+                         styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <!-- Payment Mode -->
+            <VBox spacing="8">
+                <Label text="Payment Mode *" styleClass="field-label"/>
+                <ComboBox fx:id="modeComboBox" promptText="Select Mode" prefWidth="540" 
+                         styleClass="modern-combo-box"/>
+            </VBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <Separator/>
+    
+    <!-- Action Buttons -->
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: #e2e8f0; -fx-text-fill: #4a5568; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Add Expense" onAction="#handleAdd" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+    
+</VBox>

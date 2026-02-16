@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="tn.esprit.controllers.ClientRemboursementsController"
+           prefHeight="800" prefWidth="1400" styleClass="gradient-background"
+           stylesheets="@../styles/style.css">
+    
+    <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+            <Insets top="20" right="30" bottom="30" left="30"/>
+        </padding>
+        
+        <!-- Navigation Bar -->
+        <HBox styleClass="nav-bar" spacing="30" alignment="CENTER_LEFT" prefHeight="60">
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+            
+            <!-- Logo -->
+            <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#handleBackToDashboard" style="-fx-cursor: hand;">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Credix" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- User Menu -->
+            <HBox spacing="15" alignment="CENTER">
+                <MenuButton text="Navigation" styleClass="nav-button"
+                           style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-padding: 8 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <items>
+                        <MenuItem text="🏠 Dashboard" onAction="#handleBackToDashboard"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="💳 My Accounts" onAction="#handleMyAccountsClick"/>
+                        <MenuItem text="💰 My Expenses" onAction="#handleMyExpensesClick"/>
+                        <MenuItem text="💵 My Credits" onAction="#handleMyCreditsClick"/>
+                        <MenuItem text="↩️ My Remboursements"/>
+                        <MenuItem text="📋 My Abonnement" onAction="#handleMyAbonnementClick"/>
+                        <MenuItem text="🛡️ My Assurances" onAction="#handleMyAssurancesClick"/>
+                    </items>
+                </MenuButton>
+                <VBox alignment="CENTER_RIGHT" spacing="2">
+                    <Label fx:id="headerUserNameLabel" text="Your Name" 
+                           style="-fx-font-weight: 600; -fx-font-size: 13; -fx-text-fill: #2d3748;"/>
+                    <Label fx:id="headerUserRoleLabel" text="Client" 
+                           style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                </VBox>
+                <Button text="Logout" styleClass="logout-button" onAction="#handleLogout"/>
+            </HBox>
+        </HBox>
+        
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+        <VBox spacing="30" alignment="TOP_CENTER" prefWidth="1100">
+            
+            <Label text="My Remboursements" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: black;"/>
+            
+            <!-- Summary Cards -->
+            <HBox spacing="20" alignment="CENTER">
+                <VBox styleClass="card" spacing="10" alignment="CENTER" prefWidth="250" style="-fx-padding: 25;">
+                    <Label text="Total Refunds" style="-fx-font-size: 14; -fx-text-fill: grey;"/>
+                    <Label fx:id="totalRefundsLabel" text="0.00" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: green;"/>
+                </VBox>
+                
+                <VBox styleClass="card" spacing="10" alignment="CENTER" prefWidth="250" style="-fx-padding: 25;">
+                    <Label text="Credit Payments" style="-fx-font-size: 14; -fx-text-fill: grey;"/>
+                    <Label fx:id="totalPaymentsLabel" text="0.00" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: blue;"/>
+                </VBox>
+                
+                <VBox styleClass="card" spacing="10" alignment="CENTER" prefWidth="250" style="-fx-padding: 25;">
+                    <Label text="Total Remboursements" style="-fx-font-size: 14; -fx-text-fill: grey;"/>
+                    <Label fx:id="totalRemboursementsLabel" text="0.00" style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                </VBox>
+            </HBox>
+            
+            <!-- Filters -->
+            <VBox styleClass="card" spacing="15" style="-fx-padding: 20;" prefWidth="1000">
+                <Label text="Filter Remboursements" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+                
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="Search by description..." 
+                              prefWidth="350" styleClass="modern-text-field"/>
+                    <ComboBox fx:id="typeFilter" promptText="Filter by Type" 
+                             prefWidth="200" styleClass="modern-combo-box"/>
+                    <ComboBox fx:id="statusFilter" promptText="Filter by Status" 
+                             prefWidth="180" styleClass="modern-combo-box"/>
+                    <ComboBox fx:id="sortComboBox" promptText="Sort by..." 
+                             prefWidth="180" styleClass="modern-combo-box"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Remboursements List -->
+            <VBox spacing="20" prefWidth="1000">
+                <Label text="Transaction History" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                
+                <VBox fx:id="remboursementsContainer" spacing="15"/>
+                
+                <Label fx:id="noDataLabel" text="No remboursements found" 
+                       style="-fx-font-size: 16; -fx-text-fill: grey;" visible="false"/>
+            </VBox>
+            
+        </VBox>
+        </ScrollPane>
+        
+    </VBox>
+    
+</StackPane>

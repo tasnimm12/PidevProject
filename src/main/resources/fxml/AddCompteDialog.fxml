@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.AddCompteDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: #f7fafc;" 
+      prefWidth="600" prefHeight="700">
+    
+    <Label text="Add Bank Account" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+               VBox.vgrow="ALWAYS" prefHeight="500">
+        <VBox spacing="15">
+            
+            <VBox spacing="8">
+                <Label text="User *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <ComboBox fx:id="userComboBox" promptText="Select user" maxWidth="Infinity"
+                         style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Account Number *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <TextField fx:id="numeroField" promptText="Enter account number" 
+                          style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Account Holder *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <TextField fx:id="titulaireField" promptText="Enter account holder name" 
+                          style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Email" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                    <TextField fx:id="emailField" promptText="Enter email" 
+                              style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+                </VBox>
+                
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Phone" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                    <TextField fx:id="phoneField" promptText="Enter phone" 
+                              style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+                </VBox>
+            </HBox>
+            
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Initial Balance *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                    <TextField fx:id="soldeField" promptText="0.00" text="0.00"
+                              style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+                </VBox>
+                
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Currency *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                    <ComboBox fx:id="deviseComboBox" promptText="Select currency" maxWidth="Infinity"
+                             style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+                </VBox>
+            </HBox>
+            
+            <VBox spacing="8">
+                <Label text="Account Type *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <ComboBox fx:id="typeComboBox" promptText="Select account type" maxWidth="Infinity"
+                         style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Status *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <CheckBox fx:id="actifCheckBox" text="Active" selected="true"
+                         style="-fx-font-size: 13;"/>
+            </VBox>
+            
+            <Label fx:id="errorLabel" textFill="red" wrapText="true" visible="false"
+                   style="-fx-font-size: 12; -fx-padding: 10; -fx-background-color: #fed7d7; -fx-background-radius: 6;"/>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: #e2e8f0; -fx-text-fill: #4a5568; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Add Account" onAction="#handleAdd" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+    
+</VBox>

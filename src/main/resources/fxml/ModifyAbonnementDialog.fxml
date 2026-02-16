@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyAbonnementDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white; -fx-background-radius: 15;"
+      prefWidth="450" stylesheets="@../styles/style.css">
+    
+    <Label text="Modify Abonnement" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <GridPane hgap="15" vgap="15">
+        
+        <Label text="Type" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="typeComboBox" promptText="Select type" 
+                 styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Price" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="prixField" promptText="Enter price" 
+                  styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Duration Type" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="dureeComboBox" promptText="Select duration" 
+                 styleClass="modern-combo-box" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+    </GridPane>
+    
+    <Label fx:id="errorLabel" styleClass="error-label" wrapText="true" visible="false"/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" styleClass="secondary-button" prefHeight="45" prefWidth="120" onAction="#handleCancel"/>
+        <Button text="Update" styleClass="primary-button" prefHeight="45" prefWidth="120" onAction="#handleUpdate"/>
+    </HBox>
+    
+</VBox>

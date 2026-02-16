@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.SubscribeAssuranceDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white; -fx-background-radius: 15;"
+      stylesheets="@../styles/style.css">
+    
+    <Label text="Subscribe to Insurance" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <!-- Insurance Info Display -->
+    <VBox spacing="10" style="-fx-padding: 15; -fx-background-color: #f7fafc; -fx-background-radius: 10;">
+        <Label fx:id="insuranceInfoLabel" text="Insurance Details" 
+               style="-fx-font-size: 14; -fx-font-weight: 600; -fx-text-fill: #2d3748;"/>
+        <Label fx:id="insurancePremiumLabel" text="Premium: " 
+               style="-fx-font-size: 12; -fx-text-fill: #667eea;"/>
+    </VBox>
+    
+    <ScrollPane fitToWidth="true" prefHeight="350" style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="15">
+            <GridPane hgap="15" vgap="15">
+                
+                <Label text="Contract Number" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="numeroContratField" promptText="Enter contract number" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Signature Date" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <DatePicker fx:id="dateSignaturePicker" promptText="Select signature date" 
+                           styleClass="modern-date-picker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Contract Duration (months)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="dureeContratField" promptText="Enter duration in months" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="Annual Cap (optional)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="plafondAnnuelField" promptText="Enter annual cap" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Refund Rate % (optional)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="tauxRemboursementField" promptText="Enter refund rate" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                
+                <Label text="Waiting Period (days, optional)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <TextField fx:id="delaiCarenceField" promptText="Enter waiting period" 
+                          styleClass="modern-text-field" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                
+                <Label text="Beneficiary Clause (optional)" styleClass="form-label" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <TextArea fx:id="clauseBeneficiaireTextArea" promptText="Enter beneficiary clause" 
+                         prefRowCount="2" wrapText="true"
+                         GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                
+            </GridPane>
+        </VBox>
+    </ScrollPane>
+    
+    <Label fx:id="errorLabel" styleClass="error-label" wrapText="true" visible="false"/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" styleClass="secondary-button" prefHeight="45" prefWidth="120" onAction="#handleCancel"/>
+        <Button text="Subscribe" styleClass="primary-button" prefHeight="45" prefWidth="120" onAction="#handleSubscribe"/>
+    </HBox>
+    
+</VBox>

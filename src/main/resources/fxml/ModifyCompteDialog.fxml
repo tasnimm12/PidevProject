@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyCompteDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: #f7fafc;" 
+      prefWidth="600" prefHeight="700">
+    
+    <Label text="Modify Bank Account" 
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <Separator/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                VBox.vgrow="ALWAYS" prefHeight="500">
+        <VBox spacing="20" style="-fx-padding: 10;">
+            
+            <!-- User Selection -->
+            <VBox spacing="8">
+                <Label text="Account Owner" styleClass="field-label"/>
+                <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="540" 
+                         styleClass="modern-combo-box" disable="true"/>
+                <Label fx:id="userHintLabel" text="Account owner cannot be changed" 
+                       style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+            </VBox>
+            
+            <!-- Account Number -->
+            <VBox spacing="8">
+                <Label text="Account Number *" styleClass="field-label"/>
+                <TextField fx:id="numeroCompteField" promptText="e.g., 1234567890" 
+                          prefWidth="540" styleClass="modern-text-field"/>
+                <Label text="Unique account identifier (10-20 characters)" 
+                       style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+            </VBox>
+            
+            <!-- Holder Name -->
+            <VBox spacing="8">
+                <Label text="Account Holder Name *" styleClass="field-label"/>
+                <TextField fx:id="nomTitulaireField" promptText="Full name on account" 
+                          prefWidth="540" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <!-- Email -->
+            <VBox spacing="8">
+                <Label text="Email" styleClass="field-label"/>
+                <TextField fx:id="emailField" promptText="email@example.com" 
+                          prefWidth="540" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <!-- Phone -->
+            <VBox spacing="8">
+                <Label text="Phone" styleClass="field-label"/>
+                <TextField fx:id="telephoneField" promptText="+1234567890" 
+                          prefWidth="540" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <!-- Balance -->
+            <VBox spacing="8">
+                <Label text="Balance *" styleClass="field-label"/>
+                <TextField fx:id="soldeField" promptText="0.00" 
+                          prefWidth="540" styleClass="modern-text-field"/>
+                <Label text="Current account balance" 
+                       style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+            </VBox>
+            
+            <!-- Currency -->
+            <VBox spacing="8">
+                <Label text="Currency *" styleClass="field-label"/>
+                <ComboBox fx:id="deviseComboBox" promptText="Select Currency" prefWidth="540" 
+                         styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <!-- Account Type -->
+            <VBox spacing="8">
+                <Label text="Account Type *" styleClass="field-label"/>
+                <ComboBox fx:id="typeCompteComboBox" promptText="Select Type" prefWidth="540" 
+                         styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <!-- Active Status -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <CheckBox fx:id="actifCheckBox" text="Account is Active" 
+                         style="-fx-font-size: 14; -fx-font-weight: 600;"/>
+            </HBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <Separator/>
+    
+    <!-- Action Buttons -->
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: #e2e8f0; -fx-text-fill: #4a5568; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Save Changes" onAction="#handleSave" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+    
+</VBox>

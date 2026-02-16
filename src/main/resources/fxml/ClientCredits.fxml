@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="tn.esprit.controllers.ClientCreditsController"
+           prefHeight="800" prefWidth="1400" styleClass="gradient-background"
+           stylesheets="@../styles/style.css">
+    
+    <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+            <Insets top="20" right="30" bottom="30" left="30"/>
+        </padding>
+        
+        <!-- Navigation Bar -->
+        <HBox styleClass="nav-bar" spacing="30" alignment="CENTER_LEFT" prefHeight="60">
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+            
+            <!-- Logo -->
+            <HBox spacing="10" alignment="CENTER_LEFT" onMouseClicked="#handleBackToDashboard" style="-fx-cursor: hand;">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Credix" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- User Menu -->
+            <HBox spacing="15" alignment="CENTER">
+                <MenuButton text="Navigation" styleClass="nav-button"
+                           style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-padding: 8 16; -fx-cursor: hand; -fx-background-radius: 8;">
+                    <items>
+                        <MenuItem text="🏠 Dashboard" onAction="#handleBackToDashboard"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="💳 My Accounts" onAction="#handleMyAccountsClick"/>
+                        <MenuItem text="💰 My Expenses" onAction="#handleMyExpensesClick"/>
+                        <MenuItem text="💵 My Credits"/>
+                        <MenuItem text="↩️ My Remboursements" onAction="#handleMyRemboursementsClick"/>
+                        <MenuItem text="📋 My Abonnement" onAction="#handleMyAbonnementClick"/>
+                        <MenuItem text="🛡️ My Assurances" onAction="#handleMyAssurancesClick"/>
+                    </items>
+                </MenuButton>
+                <VBox alignment="CENTER_RIGHT" spacing="2">
+                    <Label fx:id="headerUserNameLabel" text="Your Name" 
+                           style="-fx-font-weight: 600; -fx-font-size: 13; -fx-text-fill: #2d3748;"/>
+                    <Label fx:id="headerUserRoleLabel" text="Client" 
+                           style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                </VBox>
+                <Button text="Logout" styleClass="logout-button" onAction="#handleLogout"/>
+            </HBox>
+        </HBox>
+        
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+        <VBox spacing="30" alignment="TOP_CENTER" prefWidth="1000">
+            
+            <Label text="My Credits" style="-fx-font-size: 32; -fx-font-weight: bold; -fx-text-fill: black;"/>
+            
+            <!-- Request Credit Card -->
+            <VBox styleClass="card" spacing="20" style="-fx-padding: 40;" prefWidth="600">
+                <Label text="Request New Credit" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                
+                <VBox spacing="15">
+                    <VBox spacing="8">
+                        <Label text="Select Your Bank Account *" style="-fx-font-weight: 600;"/>
+                        <ComboBox fx:id="compteComboBox" promptText="Choose account" prefWidth="520" styleClass="modern-combo-box"/>
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="Loan Amount *" style="-fx-font-weight: 600;"/>
+                        <TextField fx:id="montantField" promptText="0.00" prefWidth="520" styleClass="modern-text-field"/>
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="Repayment Duration *" style="-fx-font-weight: 600;"/>
+                        <ComboBox fx:id="durationComboBox" promptText="Select duration" prefWidth="520" styleClass="modern-combo-box"/>
+                    </VBox>
+                    
+                    <Separator/>
+                    
+                    <VBox spacing="10" style="-fx-background-color: lightblue; -fx-padding: 15; -fx-background-radius: 8;">
+                        <Label fx:id="subscriptionInfoLabel" text="Your Subscription: Loading..." 
+                               style="-fx-font-size: 13; -fx-font-weight: 600;"/>
+                        <Label fx:id="interestRateLabel" text="Interest Rate: Calculating..." 
+                               style="-fx-font-size: 14; -fx-font-weight: 600; -fx-text-fill: blue;"/>
+                        <Label fx:id="totalAmountLabel" text="Total to Repay: 0.00" 
+                               style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                        <Label fx:id="monthlyPaymentLabel" text="Monthly Payment: 0.00" 
+                               style="-fx-font-size: 14; -fx-font-weight: 600; -fx-text-fill: green;"/>
+                    </VBox>
+                    
+                    <Button text="Request Credit" onAction="#handleRequestCredit" prefHeight="45"
+                            style="-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand; -fx-font-size: 15;"/>
+                </VBox>
+            </VBox>
+            
+            <!-- My Credits List -->
+            <VBox spacing="20" prefWidth="900">
+                <Label text="My Credit Requests" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                
+                <VBox fx:id="creditsContainer" spacing="15"/>
+            </VBox>
+            
+        </VBox>
+        </ScrollPane>
+        
+    </VBox>
+    
+</StackPane>

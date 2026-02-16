@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyRemboursementDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white;" 
+      prefWidth="600" prefHeight="550">
+    
+    <Label text="Modify Remboursement" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    <Separator/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                VBox.vgrow="ALWAYS" prefHeight="350">
+        <VBox spacing="20" style="-fx-padding: 10;">
+            
+            <VBox spacing="8">
+                <Label text="Type" styleClass="field-label"/>
+                <TextField fx:id="typeField" editable="false" prefWidth="540" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Amount *" styleClass="field-label"/>
+                <TextField fx:id="montantField" promptText="0.00" prefWidth="540" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Date *" styleClass="field-label"/>
+                <DatePicker fx:id="datePicker" promptText="Select date" prefWidth="540" styleClass="modern-date-picker"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Status *" styleClass="field-label"/>
+                <ComboBox fx:id="statusComboBox" promptText="Select Status" prefWidth="540" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Description" styleClass="field-label"/>
+                <TextArea fx:id="descriptionField" promptText="Details..." prefHeight="80" wrapText="true"
+                         style="-fx-background-color: white; -fx-border-color: lightgrey; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;"/>
+            </VBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <Separator/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: lightgrey; -fx-text-fill: black; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Save" onAction="#handleSave" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>

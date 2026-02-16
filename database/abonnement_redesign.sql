@@ -1,0 +1,48 @@
+-- Redesign: Separate abonnement plans from user subscriptions
+
+USE finance1;
+
+-- Drop old table and recreate properly
+DROP TABLE IF EXISTS `user_abonnement`;
+DROP TABLE IF EXISTS `abonnement`;
+
+-- 1. Abonnement Plans Table (just the templates)
+CREATE TABLE `abonnement` (
+  `id_abonnement` int NOT NULL AUTO_INCREMENT,
+  `type_abonnement` enum('Bronze','Silver','Gold','Platinum') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `prix_mensuel` decimal(10,2) NOT NULL,
+  `prix_annuel` decimal(10,2) NOT NULL,
+  `duree` enum('mensuel','annuel') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` TEXT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avantages` TEXT COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `actif` tinyint(1) DEFAULT 1,
+  PRIMARY KEY (`id_abonnement`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 2. User Subscriptions Table (user's actual subscriptions)
+CREATE TABLE `user_abonnement` (
+  `id_user_abonnement` int NOT NULL AUTO_INCREMENT,
+  `id_user` int NOT NULL,
+  `id_abonnement` int NOT NULL,
+  `date_debut` date NOT NULL,
+  `date_fin` date NOT NULL,
+  `statut` enum('actif','expire','annule') COLLATE utf8mb4_unicode_ci DEFAULT 'actif',
+  `renouvellement_auto` tinyint(1) DEFAULT 0,
+  `date_souscription` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_user_abonnement`),
+  KEY `fk_user_abon_user` (`id_user`),
+  KEY `fk_user_abon_plan` (`id_abonnement`),
+  CONSTRAINT `fk_user_abon_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_user_abon_plan` FOREIGN KEY (`id_abonnement`) REFERENCES `abonnement` (`id_abonnement`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Insert sample plans
+INSERT INTO `abonnement` (`type_abonnement`, `prix_mensuel`, `prix_annuel`, `duree`, `description`, `avantages`, `actif`) VALUES
+('Bronze', 9.99, 99.99, 'mensuel', 'Basic plan for individuals', 'Basic features, Email support', 1),
+('Bronze', 99.99, 99.99, 'annuel', 'Basic plan for individuals (Annual)', 'Basic features, Email support, 2 months free', 1),
+('Silver', 19.99, 199.99, 'mensuel', 'Advanced plan for professionals', 'All Basic features, Priority support, Advanced analytics', 1),
+('Silver', 199.99, 199.99, 'annuel', 'Advanced plan for professionals (Annual)', 'All Basic features, Priority support, Advanced analytics, 2 months free', 1),
+('Gold', 49.99, 499.99, 'mensuel', 'Premium plan for teams', 'All Silver features, Team collaboration, API access', 1),
+('Gold', 499.99, 499.99, 'annuel', 'Premium plan for teams (Annual)', 'All Silver features, Team collaboration, API access, 2 months free', 1),
+('Platinum', 99.99, 999.99, 'mensuel', 'Enterprise plan', 'All Gold features, Dedicated support, Custom integrations', 1),
+('Platinum', 999.99, 999.99, 'annuel', 'Enterprise plan (Annual)', 'All Gold features, Dedicated support, Custom integrations, 2 months free', 1);

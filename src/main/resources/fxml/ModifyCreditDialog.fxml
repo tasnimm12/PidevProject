@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyCreditDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white;" 
+      prefWidth="650" prefHeight="700">
+    
+    <Label text="Modify Credit" 
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    
+    <Separator/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                VBox.vgrow="ALWAYS" prefHeight="500">
+        <VBox spacing="20" style="-fx-padding: 10;">
+            
+            <VBox spacing="8">
+                <Label text="User" styleClass="field-label"/>
+                <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="590" 
+                         styleClass="modern-combo-box" disable="true"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Bank Account" styleClass="field-label"/>
+                <ComboBox fx:id="compteComboBox" promptText="Select Account" prefWidth="590" 
+                         styleClass="modern-combo-box" disable="true"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Remaining Amount *" styleClass="field-label"/>
+                <TextField fx:id="montantRestantField" promptText="0.00" prefWidth="590" styleClass="modern-text-field"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Status *" styleClass="field-label"/>
+                <ComboBox fx:id="statusComboBox" promptText="Select Status" prefWidth="590" styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Refusal Reason (if refused)" styleClass="field-label"/>
+                <TextArea fx:id="motifField" promptText="Enter reason..." prefHeight="80" wrapText="true"
+                         style="-fx-background-color: white; -fx-border-color: lightgrey; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 10;"/>
+            </VBox>
+            
+            <HBox spacing="30" alignment="CENTER">
+                <VBox spacing="5" alignment="CENTER" prefWidth="180">
+                    <Label text="Total Amount" style="-fx-font-size: 12; -fx-text-fill: grey;"/>
+                    <Label fx:id="totalLabel" text="0.00" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                </VBox>
+                <VBox spacing="5" alignment="CENTER" prefWidth="180">
+                    <Label text="Monthly Payment" style="-fx-font-size: 12; -fx-text-fill: grey;"/>
+                    <Label fx:id="mensualiteLabel" text="0.00" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: blue;"/>
+                </VBox>
+            </HBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <Separator/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: lightgrey; -fx-text-fill: black; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Save Changes" onAction="#handleSave" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+    
+</VBox>

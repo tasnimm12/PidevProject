@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.AddCreditDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: white;" 
+      prefWidth="650" prefHeight="750">
+    
+    <Label text="Add New Credit Request" 
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: black;"/>
+    
+    <Separator/>
+    
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;" 
+                VBox.vgrow="ALWAYS" prefHeight="550">
+        <VBox spacing="20" style="-fx-padding: 10;">
+            
+            <VBox spacing="8">
+                <Label text="User *" styleClass="field-label"/>
+                <ComboBox fx:id="userComboBox" promptText="Select User" prefWidth="590" 
+                         styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Bank Account *" styleClass="field-label"/>
+                <ComboBox fx:id="compteComboBox" promptText="Select Account" prefWidth="590" 
+                         styleClass="modern-combo-box"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Requested Amount *" styleClass="field-label"/>
+                <TextField fx:id="montantField" promptText="0.00" prefWidth="590" styleClass="modern-text-field"/>
+                <Label text="Loan principal amount" style="-fx-font-size: 11; -fx-text-fill: grey;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Credit Duration *" styleClass="field-label"/>
+                <ComboBox fx:id="typeComboBox" promptText="Select Duration" prefWidth="590" styleClass="modern-combo-box"/>
+                <Label text="Loan repayment period" style="-fx-font-size: 11; -fx-text-fill: grey;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label fx:id="interestInfoLabel" text="Interest Rate: Calculated based on subscription" 
+                       style="-fx-font-size: 13; -fx-text-fill: blue; -fx-font-weight: 600;"/>
+            </VBox>
+            
+            <Separator/>
+            
+            <HBox spacing="30" alignment="CENTER">
+                <VBox spacing="5" alignment="CENTER" prefWidth="180">
+                    <Label text="Total to Pay" style="-fx-font-size: 12; -fx-text-fill: grey;"/>
+                    <Label fx:id="totalLabel" text="0.00" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: black;"/>
+                </VBox>
+                <VBox spacing="5" alignment="CENTER" prefWidth="180">
+                    <Label text="Monthly Payment" style="-fx-font-size: 12; -fx-text-fill: grey;"/>
+                    <Label fx:id="mensualiteLabel" text="0.00" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: blue;"/>
+                </VBox>
+            </HBox>
+            
+            <Separator/>
+            
+            <VBox spacing="8">
+                <Label text="Request Date *" styleClass="field-label"/>
+                <DatePicker fx:id="datePicker" promptText="Select date" prefWidth="590" styleClass="modern-date-picker"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Status *" styleClass="field-label"/>
+                <ComboBox fx:id="statusComboBox" promptText="Select Status" prefWidth="590" styleClass="modern-combo-box"/>
+            </VBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <Separator/>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: lightgrey; -fx-text-fill: black; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Add Credit" onAction="#handleAdd" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: blue; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+    
+</VBox>
