@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+           fx:controller="tn.esprit.controllers.ClientDashboardController"
+           prefHeight="800" prefWidth="1400" styleClass="gradient-background"
+           stylesheets="@../styles/style.css">
+    
+    <VBox spacing="20" alignment="TOP_CENTER">
+        <padding>
+            <Insets top="20" right="30" bottom="30" left="30"/>
+        </padding>
+        
+        <!-- Navigation Bar -->
+        <HBox styleClass="nav-bar" spacing="30" alignment="CENTER_LEFT" prefHeight="60">
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+            
+            <!-- Logo -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Credix" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Navigation Buttons -->
+            <Button text="Dashboard" styleClass="nav-button, nav-button-active" style="-fx-font-size: 12; -fx-padding: 8 12;"/>
+            <Button text="Projects" styleClass="nav-button" onAction="#handleProjectsClick" style="-fx-font-size: 12; -fx-padding: 8 12;"/>
+            <Button text="Investments" styleClass="nav-button" style="-fx-font-size: 12; -fx-padding: 8 12;"/>
+            <Button text="Wallet" styleClass="nav-button" style="-fx-font-size: 12; -fx-padding: 8 12;"/>
+            <Button text="Transaction" styleClass="nav-button" style="-fx-font-size: 12; -fx-padding: 8 12;"/>
+            <Button text="Messages" styleClass="nav-button" style="-fx-font-size: 12; -fx-padding: 8 12;"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- User Info -->
+            <HBox spacing="15" alignment="CENTER">
+                <MenuButton fx:id="userMenuButton" styleClass="user-menu-button" 
+                           style="-fx-background-color: transparent; -fx-padding: 5; -fx-cursor: hand;">
+                    <graphic>
+                        <VBox alignment="CENTER_RIGHT" spacing="2">
+                            <Label fx:id="userNameLabel" text="Your Name" 
+                                   style="-fx-font-weight: 600; -fx-font-size: 13; -fx-text-fill: #2d3748;"/>
+                            <Label fx:id="userRoleLabel" text="Client" 
+                                   style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                        </VBox>
+                    </graphic>
+                    <items>
+                        <MenuItem text="My Profile" onAction="#handleUserProfileClick"/>
+                        <MenuItem text="My Abonnement" onAction="#handleUserAbonnementClick"/>
+                        <MenuItem text="My Assurances" onAction="#handleUserAssurancesClick"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Settings" />
+                    </items>
+                </MenuButton>
+                <StackPane prefWidth="40" prefHeight="40" style="-fx-background-color: #667eea; -fx-background-radius: 20; -fx-border-color: #ffffff; -fx-border-width: 2; -fx-border-radius: 20;"/>
+                <Button text="Logout" styleClass="link-button" onAction="#handleLogout" 
+                       style="-fx-font-size: 12;"/>
+            </HBox>
+        </HBox>
+        
+        <!-- Main Content -->
+        <HBox spacing="25" VBox.vgrow="ALWAYS">
+            
+            <!-- Left Column -->
+            <VBox spacing="25" prefWidth="350">
+                
+                <!-- My Cards Section -->
+                <VBox styleClass="card" spacing="15">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="My cards" styleClass="card-title" HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add card" styleClass="link-button" style="-fx-font-size: 12;"/>
+                    </HBox>
+                    <Label text="3 active cards" styleClass="card-subtitle"/>
+                    
+                    <!-- Balance Display -->
+                    <HBox spacing="50">
+                        <VBox spacing="5">
+                            <Label text="Your total balance" style="-fx-font-size: 12; -fx-text-fill: #718096;"/>
+                            <Label fx:id="totalBalanceLabel" text="5,600" styleClass="amount-text"/>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="Total expenses" style="-fx-font-size: 12; -fx-text-fill: #718096;"/>
+                            <Label fx:id="totalExpensesLabel" text="4,400" styleClass="amount-text"/>
+                        </VBox>
+                    </HBox>
+                    
+                    <!-- Second Row -->
+                    <HBox spacing="50">
+                        <VBox spacing="5">
+                            <Label text="Available balance" style="-fx-font-size: 12; -fx-text-fill: #718096;"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label fx:id="availableBalanceLabel" text="9,000" styleClass="amount-text"/>
+                                <Label text="+52%" styleClass="badge-green"/>
+                            </HBox>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="Total savings" style="-fx-font-size: 12; -fx-text-fill: #718096;"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label fx:id="totalSavingsLabel" text="1,546" styleClass="amount-text"/>
+                                <Label text="-1%" styleClass="badge-red"/>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                    
+                    <!-- Card Display - Gradient Card 1 -->
+                    <VBox styleClass="gradient-card" spacing="30" prefHeight="140">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="☰" style="-fx-text-fill: white; -fx-font-size: 18;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="Card" styleClass="white-text" style="-fx-font-size: 16; -fx-font-style: italic;"/>
+                            <Label text="Bank" styleClass="white-text" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                            <StackPane prefWidth="16" prefHeight="16" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 8;"/>
+                        </HBox>
+                        
+                        <VBox spacing="5">
+                            <Label text="4352 0091 8801 2214" styleClass="white-text" 
+                                   style="-fx-font-size: 18; -fx-font-weight: 600; -fx-letter-spacing: 2;"/>
+                            <HBox spacing="30">
+                                <Label text="Valid thru" styleClass="white-text" 
+                                       style="-fx-font-size: 10; -fx-opacity: 0.8;"/>
+                                <Label text="05/26" styleClass="white-text" style="-fx-font-size: 12;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <!-- Card Display - Dark Card 2 -->
+                    <VBox styleClass="dark-gradient-card" spacing="30" prefHeight="140">
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="☰" style="-fx-text-fill: white; -fx-font-size: 18;"/>
+                            <Region HBox.hgrow="ALWAYS"/>
+                            <Label text="Card" styleClass="white-text" style="-fx-font-size: 16; -fx-font-style: italic;"/>
+                            <Label text="Bank" styleClass="white-text" style="-fx-font-size: 11; -fx-font-weight: bold;"/>
+                            <StackPane prefWidth="16" prefHeight="16" style="-fx-background-color: rgba(255,255,255,0.5); -fx-background-radius: 8;"/>
+                        </HBox>
+                        
+                        <VBox spacing="5">
+                            <Label text="5395 0045 9410 7185" styleClass="white-text" 
+                                   style="-fx-font-size: 18; -fx-font-weight: 600; -fx-letter-spacing: 2;"/>
+                            <HBox spacing="30">
+                                <Label text="Valid thru" styleClass="white-text" 
+                                       style="-fx-font-size: 10; -fx-opacity: 0.8;"/>
+                                <Label text="07/30" styleClass="white-text" style="-fx-font-size: 12;"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <Button text="View all" styleClass="secondary-button" prefHeight="40"/>
+                </VBox>
+                
+            </VBox>
+            
+            <!-- Middle Column -->
+            <VBox spacing="25">
+                
+                <!-- Quick Transfer Section -->
+                <VBox styleClass="card" spacing="20" prefHeight="280">
+                    <Label text="Quick transfer" styleClass="card-title"/>
+                    
+                    <!-- Contact Avatars -->
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <StackPane prefWidth="56" prefHeight="56" style="-fx-background-color: #667eea; -fx-background-radius: 28;"/>
+                        <StackPane prefWidth="56" prefHeight="56" style="-fx-background-color: #f56565; -fx-background-radius: 28;"/>
+                        <StackPane prefWidth="56" prefHeight="56" style="-fx-background-color: #ed8936; -fx-background-radius: 28;"/>
+                        <StackPane prefWidth="56" prefHeight="56" 
+                                  style="-fx-background-color: #f7fafc; -fx-background-radius: 28;">
+                            <Label text="+" style="-fx-font-size: 24; -fx-text-fill: #667eea;"/>
+                        </StackPane>
+                        <Button text="›" styleClass="nav-button" prefWidth="30"/>
+                    </HBox>
+                    
+                    <!-- Transfer Amount -->
+                    <VBox spacing="10">
+                        <Label text="Send money" style="-fx-font-size: 12; -fx-text-fill: #718096;"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <TextField text="**** **** **** ****" 
+                                      style="-fx-background-color: #f7fafc; -fx-background-radius: 10; 
+                                             -fx-padding: 10 15; -fx-font-size: 14; -fx-pref-width: 200;"/>
+                            <Label text="Card" style="-fx-font-size: 16; -fx-font-style: italic; -fx-text-fill: #2d3748;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Action Buttons -->
+                    <HBox spacing="15">
+                        <Button text="Send money" styleClass="primary-button" prefHeight="45" maxWidth="Infinity"/>
+                        <Button text="Save Draft" styleClass="secondary-button" prefHeight="45" prefWidth="120"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- My Transactions Section -->
+                <VBox styleClass="card" spacing="20">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="My transactions" styleClass="card-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <ComboBox value="Weekly" style="-fx-background-color: #f7fafc; 
+                                 -fx-background-radius: 8; -fx-padding: 5 10;"/>
+                    </HBox>
+                    
+                    <!-- Transactions Table -->
+                    <TableView fx:id="transactionsTable" prefHeight="400">
+                        <columns>
+                            <TableColumn text="Transaction details" prefWidth="200"/>
+                            <TableColumn text="Transaction ID" prefWidth="100"/>
+                            <TableColumn text="Date" prefWidth="120"/>
+                            <TableColumn text="Amount" prefWidth="100"/>
+                            <TableColumn text="" prefWidth="30"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+                
+            </VBox>
+            
+            <!-- Right Column -->
+            <VBox spacing="25" prefWidth="300">
+                
+                <!-- Expenses Section -->
+                <VBox styleClass="card" spacing="20" prefHeight="450">
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Expenses" styleClass="card-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <ComboBox value="Monthly" style="-fx-background-color: #f7fafc; 
+                                 -fx-background-radius: 8; -fx-padding: 5 10;"/>
+                    </HBox>
+                    
+                    <!-- Expense Categories -->
+                    <HBox spacing="40">
+                        <VBox spacing="5">
+                            <Label text="Daily" style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                            <Label text="45.00" style="-fx-font-size: 14; -fx-font-weight: 600; -fx-text-fill: #f56565;"/>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="Weekly" style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                            <Label text="105.00" style="-fx-font-size: 14; -fx-font-weight: 600; -fx-text-fill: #2d3748;"/>
+                        </VBox>
+                        <VBox spacing="5">
+                            <Label text="Monthly" style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                            <Label text="110.00" style="-fx-font-size: 14; -fx-font-weight: 600; -fx-text-fill: #2d3748;"/>
+                        </VBox>
+                    </HBox>
+                    
+                    <!-- Chart Placeholder -->
+                    <StackPane prefHeight="150">
+                        <VBox alignment="CENTER" spacing="5">
+                            <Label text="8,490" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+                            <Label text="Total" style="-fx-font-size: 12; -fx-text-fill: #a0aec0;"/>
+                        </VBox>
+                    </StackPane>
+                    
+                    <!-- Legend -->
+                    <VBox spacing="12">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <StackPane prefWidth="10" prefHeight="10" style="-fx-background-color: #667eea; -fx-background-radius: 5;"/>
+                            <Label text="Shopping" style="-fx-text-fill: #2d3748; -fx-font-size: 13;"/>
+                        </HBox>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <StackPane prefWidth="10" prefHeight="10" style="-fx-background-color: #f6ad55; -fx-background-radius: 5;"/>
+                            <Label text="Subscriptions" style="-fx-text-fill: #2d3748; -fx-font-size: 13;"/>
+                        </HBox>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <StackPane prefWidth="10" prefHeight="10" style="-fx-background-color: #e2e8f0; -fx-background-radius: 5;"/>
+                            <Label text="Fuel" style="-fx-text-fill: #2d3748; -fx-font-size: 13;"/>
+                        </HBox>
+                    </VBox>
+                </VBox>
+                
+            </VBox>
+            
+        </HBox>
+        
+    </VBox>
+    
+</StackPane>

@@ -1,0 +1,383 @@
+/* Modern Financial Dashboard Styling */
+
+/* Root Styling */
+.root {
+    -fx-font-family: 'Segoe UI', 'Inter', 'Roboto', sans-serif;
+}
+
+/* Gradient Background - Updated to match blue theme */
+.gradient-background {
+    -fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2, #667eea);
+}
+
+/* Login Container */
+.login-container {
+    -fx-background-color: rgba(255, 255, 255, 0.98);
+    -fx-background-radius: 25;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.25), 40, 0, 0, 10);
+    -fx-padding: 50;
+}
+
+/* Card Styling */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 20, 0, 0, 5);
+    -fx-padding: 25;
+}
+
+.card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 25, 0, 0, 8);
+    -fx-scale-x: 1.01;
+    -fx-scale-y: 1.01;
+}
+
+/* Gradient Card */
+.gradient-card {
+    -fx-background-color: linear-gradient(to bottom right, #667eea, #764ba2);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 20, 0, 0, 10);
+    -fx-padding: 25;
+}
+
+.dark-gradient-card {
+    -fx-background-color: linear-gradient(to bottom right, #5a6673, #4a4e69);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 20, 0, 0, 10);
+    -fx-padding: 25;
+}
+
+/* Text Styling */
+.title-text {
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+    -fx-fill: #667eea;
+}
+
+.subtitle-text {
+    -fx-font-size: 14;
+    -fx-fill: #718096;
+}
+
+.card-title {
+    -fx-font-size: 18;
+    -fx-font-weight: 600;
+    -fx-fill: #2d3748;
+}
+
+.card-subtitle {
+    -fx-font-size: 12;
+    -fx-fill: #a0aec0;
+}
+
+.white-text {
+    -fx-fill: white;
+}
+
+.amount-text {
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+}
+
+/* Input Fields */
+.modern-text-field {
+    -fx-background-color: #f7fafc;
+    -fx-background-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-radius: 12;
+    -fx-padding: 15 20;
+    -fx-font-size: 14;
+    -fx-text-fill: #2d3748;
+    -fx-prompt-text-fill: #a0aec0;
+}
+
+.modern-text-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #667eea;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 10, 0, 0, 0);
+}
+
+.modern-password-field {
+    -fx-background-color: #f7fafc;
+    -fx-background-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-radius: 12;
+    -fx-padding: 15 20;
+    -fx-font-size: 14;
+    -fx-text-fill: #2d3748;
+    -fx-prompt-text-fill: #a0aec0;
+}
+
+.modern-password-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #667eea;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.15), 10, 0, 0, 0);
+}
+
+/* Buttons */
+.primary-button {
+    -fx-background-color: linear-gradient(to right, #667eea, #5a67d8);
+    -fx-background-radius: 12;
+    -fx-text-fill: white;
+    -fx-font-size: 15;
+    -fx-font-weight: 600;
+    -fx-padding: 15 40;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.4), 15, 0, 0, 5);
+}
+
+.primary-button:hover {
+    -fx-background-color: linear-gradient(to right, #5568d3, #4c51bf);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.6), 20, 0, 0, 8);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.primary-button:pressed {
+    -fx-background-color: linear-gradient(to right, #4a52b8, #434190);
+    -fx-effect: dropshadow(gaussian, rgba(102, 126, 234, 0.3), 10, 0, 0, 2);
+}
+
+.secondary-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 2;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-text-fill: #4a5568;
+    -fx-font-size: 15;
+    -fx-font-weight: 600;
+    -fx-padding: 15 40;
+    -fx-cursor: hand;
+}
+
+.secondary-button:hover {
+    -fx-background-color: #f7fafc;
+    -fx-border-color: #667eea;
+}
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #667eea;
+    -fx-font-size: 14;
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-underline: false;
+}
+
+.link-button:hover {
+    -fx-text-fill: #5a67d8;
+    -fx-underline: true;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #2d3748;
+}
+
+.form-label {
+    -fx-font-size: 14;
+    -fx-font-weight: 600;
+    -fx-text-fill: #4a5568;
+}
+
+.error-label {
+    -fx-text-fill: #f56565;
+    -fx-font-size: 12;
+}
+
+.success-label {
+    -fx-text-fill: #48bb78;
+    -fx-font-size: 12;
+}
+
+/* ComboBox */
+.modern-combo-box {
+    -fx-background-color: #f7fafc;
+    -fx-background-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-radius: 12;
+    -fx-padding: 15 20;
+    -fx-font-size: 14;
+}
+
+.modern-combo-box:focused {
+    -fx-background-color: white;
+    -fx-border-color: #667eea;
+    -fx-border-width: 2;
+}
+
+.modern-combo-box .list-cell {
+    -fx-background-color: white;
+    -fx-text-fill: #2d3748;
+    -fx-padding: 10;
+}
+
+.modern-combo-box .list-cell:hover {
+    -fx-background-color: #f7fafc;
+}
+
+/* Dashboard Specific */
+.nav-bar {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.08), 15, 0, 0, 3);
+    -fx-padding: 15 25;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #718096;
+    -fx-font-size: 14;
+    -fx-font-weight: 500;
+    -fx-cursor: hand;
+    -fx-padding: 10 20;
+}
+
+.nav-button:hover {
+    -fx-text-fill: #667eea;
+    -fx-background-color: rgba(102, 126, 234, 0.1);
+    -fx-background-radius: 10;
+}
+
+.nav-button-active {
+    -fx-background-color: rgba(102, 126, 234, 0.15);
+    -fx-background-radius: 10;
+    -fx-text-fill: #667eea;
+    -fx-font-weight: 600;
+}
+
+/* Badge Styling */
+.badge-green {
+    -fx-background-color: #c6f6d5;
+    -fx-text-fill: #22543d;
+    -fx-background-radius: 8;
+    -fx-padding: 4 12;
+    -fx-font-size: 11;
+    -fx-font-weight: 600;
+}
+
+.badge-red {
+    -fx-background-color: #fed7d7;
+    -fx-text-fill: #742a2a;
+    -fx-background-radius: 8;
+    -fx-padding: 4 12;
+    -fx-font-size: 11;
+    -fx-font-weight: 600;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5 0 0;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb {
+    -fx-background-color: rgba(102, 126, 234, 0.3);
+    -fx-background-radius: 5;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb:hover {
+    -fx-background-color: rgba(102, 126, 234, 0.5);
+}
+
+.scroll-pane > .scroll-bar:vertical > .increment-button,
+.scroll-pane > .scroll-bar:vertical > .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* Table View */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 15, 0, 0, 3);
+}
+
+.table-view .column-header {
+    -fx-background-color: #f7fafc;
+    -fx-font-weight: 600;
+    -fx-text-fill: #4a5568;
+    -fx-padding: 15;
+}
+
+.table-view .table-cell {
+    -fx-padding: 12;
+    -fx-text-fill: #2d3748;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #f7fafc;
+}
+
+/* FlowPane for Cards */
+.flow-pane {
+    -fx-background-color: transparent;
+}
+
+/* User Card Action Buttons */
+.user-action-button {
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-padding: 8 15;
+    -fx-font-size: 12;
+    -fx-font-weight: 600;
+}
+
+.user-action-button:hover {
+    -fx-opacity: 0.9;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0, 0, 2);
+}
+
+/* User Menu Button */
+.user-menu-button {
+    -fx-background-color: transparent;
+}
+
+.user-menu-button:hover {
+    -fx-background-color: rgba(102, 126, 234, 0.1);
+    -fx-background-radius: 8;
+}
+
+.user-menu-button .arrow {
+    -fx-background-color: #667eea;
+    -fx-padding: 3;
+}
+
+.user-menu-button .context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 3);
+}
+
+.user-menu-button .menu-item {
+    -fx-padding: 12 20;
+}
+
+.user-menu-button .menu-item:focused {
+    -fx-background-color: #f7fafc;
+}
+
+.user-menu-button .menu-item .label {
+    -fx-text-fill: #2d3748;
+    -fx-font-size: 13;
+}
+
+.user-menu-button .menu-item:hover .label {
+    -fx-text-fill: #667eea;
+}

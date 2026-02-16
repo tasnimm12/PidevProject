@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="tn.esprit.controllers.ModifyProjetDialogController"
+      spacing="20" style="-fx-padding: 30; -fx-background-color: #f7fafc;">
+    
+    <Label text="Modify Project" style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+    
+    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+        <VBox spacing="15">
+            
+            <VBox spacing="8">
+                <Label text="Project Name *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <TextField fx:id="nomField" promptText="Enter project name" 
+                          style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Description *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <TextArea fx:id="descriptionField" promptText="Enter project description" 
+                         prefRowCount="3" wrapText="true"
+                         style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Sector *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <ComboBox fx:id="secteurComboBox" promptText="Select sector" maxWidth="Infinity"
+                         style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <VBox spacing="8">
+                <Label text="Target Amount *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <TextField fx:id="montantField" promptText="Enter target amount" 
+                          style="-fx-padding: 12; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Start Date *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                    <DatePicker fx:id="dateDebutPicker" maxWidth="Infinity"
+                               style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+                </VBox>
+                
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="End Date" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                    <DatePicker fx:id="dateFinPicker" maxWidth="Infinity"
+                               style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+                </VBox>
+            </HBox>
+            
+            <VBox spacing="8">
+                <Label text="Status *" style="-fx-font-weight: 600; -fx-text-fill: #4a5568;"/>
+                <ComboBox fx:id="statutComboBox" promptText="Select status" maxWidth="Infinity"
+                         style="-fx-padding: 8; -fx-font-size: 13; -fx-background-radius: 8;"/>
+            </VBox>
+            
+            <Label fx:id="errorLabel" textFill="red" wrapText="true" visible="false"
+                   style="-fx-font-size: 12; -fx-padding: 10; -fx-background-color: #fed7d7; -fx-background-radius: 6;"/>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <HBox spacing="15" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel" prefWidth="120" prefHeight="40"
+                style="-fx-background-color: #e2e8f0; -fx-text-fill: #4a5568; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+        <Button text="Save Changes" onAction="#handleSave" prefWidth="140" prefHeight="40"
+                style="-fx-background-color: #667eea; -fx-text-fill: white; -fx-font-weight: 600; -fx-background-radius: 8; -fx-cursor: hand;"/>
+    </HBox>
+    
+</VBox>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="tn.esprit.controllers.ClientProjetsController"
+          styleClass="gradient-background" stylesheets="@../styles/style.css">
+    
+    <VBox spacing="0">
+        
+        <!-- Navigation Bar -->
+        <HBox styleClass="nav-bar" spacing="30" alignment="CENTER_LEFT" prefHeight="60">
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+            
+            <!-- Logo -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Credix" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Back Button -->
+            <Button text="← Back to Dashboard" styleClass="nav-button" onAction="#handleBackToDashboard"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- User Info -->
+            <HBox spacing="15" alignment="CENTER">
+                <MenuButton fx:id="userMenuButton" styleClass="user-menu-button">
+                    <graphic>
+                        <VBox alignment="CENTER_RIGHT" spacing="2">
+                            <Label fx:id="userNameLabel" text="User Name" 
+                                   style="-fx-font-weight: 600; -fx-font-size: 13; -fx-text-fill: #2d3748;"/>
+                            <Label fx:id="userRoleLabel" text="Client" 
+                                   style="-fx-font-size: 11; -fx-text-fill: #a0aec0;"/>
+                        </VBox>
+                    </graphic>
+                    <items>
+                        <MenuItem text="My Profile" onAction="#handleUserProfileClick"/>
+                        <MenuItem text="My Abonnement" onAction="#handleUserAbonnementClick"/>
+                        <MenuItem text="My Assurances" onAction="#handleUserAssurancesClick"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Logout" onAction="#handleLogout"/>
+                    </items>
+                </MenuButton>
+            </HBox>
+        </HBox>
+        
+        <!-- Main Content -->
+        <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+            <VBox spacing="30" alignment="TOP_CENTER" style="-fx-padding: 40;">
+                
+                <!-- Header -->
+                <VBox spacing="10" alignment="CENTER">
+                    <Label text="Investment Projects" 
+                           style="-fx-font-size: 36; -fx-font-weight: bold; -fx-text-fill: #2d3748;"/>
+                    <Label text="Explore and invest in exciting projects" 
+                           style="-fx-font-size: 14; -fx-text-fill: #a0aec0;"/>
+                </VBox>
+                
+                <!-- Search and Filter Section -->
+                <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: white; -fx-background-radius: 12;">
+                    <TextField fx:id="searchField" promptText="Search projects..." 
+                              styleClass="modern-text-field" prefWidth="400" prefHeight="45"/>
+                    <ComboBox fx:id="statusFilterComboBox" promptText="Filter by Status" 
+                             styleClass="modern-combo-box" prefHeight="45" prefWidth="180"/>
+                    <ComboBox fx:id="secteurFilterComboBox" promptText="Filter by Sector" 
+                             styleClass="modern-combo-box" prefHeight="45" prefWidth="180"/>
+                </HBox>
+                
+                <!-- Projects Grid -->
+                <FlowPane fx:id="projetsContainer" hgap="25" vgap="25" alignment="CENTER" 
+                         style="-fx-background-color: transparent; -fx-padding: 10;" 
+                         prefWidth="1200"/>
+                
+            </VBox>
+        </ScrollPane>
+        
+    </VBox>
+    
+</StackPane>

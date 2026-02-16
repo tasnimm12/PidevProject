@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="tn.esprit.controllers.OrganisateurDashboardController"
+          stylesheets="@../styles/style.css">
+    
+    <VBox spacing="0" styleClass="dashboard-root">
+        
+        <!-- Navigation Bar -->
+        <HBox styleClass="nav-bar" spacing="30" alignment="CENTER_LEFT" prefHeight="60">
+            <padding>
+                <Insets left="20" right="20"/>
+            </padding>
+            
+            <!-- Logo -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitHeight="35" fitWidth="35" preserveRatio="true">
+                    <image>
+                        <Image url="@/images/logo.png"/>
+                    </image>
+                </ImageView>
+                <Label text="Credix" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #667eea;"/>
+            </HBox>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Navigation Buttons -->
+            <Button fx:id="projetsBtn" text="Projets" styleClass="nav-button, nav-button-active" onAction="#showProjets" 
+                   style="-fx-font-size: 12; -fx-padding: 8 14;"/>
+            <Button fx:id="investissementsBtn" text="Investissements" styleClass="nav-button" onAction="#showInvestissements" 
+                   style="-fx-font-size: 12; -fx-padding: 8 14;"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <!-- Organisateur Info -->
+            <HBox spacing="15" alignment="CENTER">
+                <VBox alignment="CENTER_RIGHT" spacing="2">
+                    <Label fx:id="orgNameLabel" text="Organisateur Name" 
+                           style="-fx-font-weight: 600; -fx-font-size: 13; -fx-text-fill: #2d3748;"/>
+                    <Label text="Organisateur" 
+                           style="-fx-font-size: 11; -fx-text-fill: #667eea; -fx-font-weight: 600;"/>
+                </VBox>
+                <StackPane prefWidth="40" prefHeight="40" style="-fx-background-color: #764ba2; -fx-background-radius: 20; -fx-border-color: #ffffff; -fx-border-width: 2; -fx-border-radius: 20;"/>
+                <Button text="Logout" styleClass="link-button" onAction="#handleLogout" 
+                       style="-fx-font-size: 12;"/>
+            </HBox>
+        </HBox>
+        
+        <!-- Content Area with StackPane -->
+        <StackPane VBox.vgrow="ALWAYS">
+            
+            <!-- Projets View -->
+            <VBox fx:id="projetsView" spacing="20" style="-fx-padding: 20;">
+                <VBox styleClass="card" spacing="15">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Projets Management" styleClass="card-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add Projet" styleClass="primary-button" prefHeight="40" onAction="#handleAddProjet"/>
+                    </HBox>
+                    
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <TextField fx:id="projetSearchField" promptText="Search projets..." 
+                                  styleClass="modern-text-field" prefWidth="350" prefHeight="45"/>
+                        <ComboBox fx:id="projetStatusFilter" promptText="Filter by Status" 
+                                 styleClass="modern-combo-box" prefHeight="45" prefWidth="150"/>
+                        <ComboBox fx:id="projetSortComboBox" promptText="Sort by..." 
+                                 styleClass="modern-combo-box" prefHeight="45" prefWidth="180"/>
+                    </HBox>
+                </VBox>
+                
+                <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+                           VBox.vgrow="ALWAYS">
+                    <FlowPane fx:id="projetsCardsContainer" hgap="20" vgap="20" 
+                             style="-fx-background-color: transparent; -fx-padding: 10;"/>
+                </ScrollPane>
+            </VBox>
+            
+            <!-- Investissements View -->
+            <VBox fx:id="investissementsView" spacing="20" style="-fx-padding: 20;" visible="false">
+                <VBox styleClass="card" spacing="15">
+                    <HBox spacing="20" alignment="CENTER_LEFT">
+                        <Label text="Investissements Management" styleClass="card-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="+ Add Investissement" styleClass="primary-button" prefHeight="40" onAction="#handleAddInvestissement"/>
+                    </HBox>
+                    
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <TextField fx:id="invesSearchField" promptText="Search investissements..." 
+                                  styleClass="modern-text-field" prefWidth="350" prefHeight="45"/>
+                        <ComboBox fx:id="invesStatusFilter" promptText="Filter by Status" 
+                                 styleClass="modern-combo-box" prefHeight="45" prefWidth="150"/>
+                        <ComboBox fx:id="invesSortComboBox" promptText="Sort by..." 
+                                 styleClass="modern-combo-box" prefHeight="45" prefWidth="180"/>
+                    </HBox>
+                </VBox>
+                
+                <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;"
+                           VBox.vgrow="ALWAYS">
+                    <FlowPane fx:id="investissementsCardsContainer" hgap="20" vgap="20" 
+                             style="-fx-background-color: transparent; -fx-padding: 10;"/>
+                </ScrollPane>
+            </VBox>
+            
+        </StackPane>
+        
+    </VBox>
+    
+</StackPane>
